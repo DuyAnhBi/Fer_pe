@@ -13,6 +13,7 @@ import {
   InputGroup,
 } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
+import { Link } from "react-router-dom";
 
 const HomePage = () => {
   const [categories, setCategories] = useState([]);
@@ -127,7 +128,11 @@ const HomePage = () => {
           {filteredProducts.map((products) => (
             <div key={products.id}>
               <Card style={{ width: "18rem" }}>
-                <Card.Img variant="top" src="holder.js/100px180" />
+                <Card.Img
+                  style={{ height: "300px" }}
+                  variant="top"
+                  src={`/images/${products.image}`}
+                />
                 <Card.Body>
                   <Card.Text>{products.id}</Card.Text>
                   <Card.Text>{products.title}</Card.Text>
@@ -159,7 +164,9 @@ const HomePage = () => {
                     ).toFixed(0)}
                   </Card.Text>
 
-                  <Button variant="success">View Detail</Button>
+                  <Link to={`/product/${products.id}`}>
+                    <Button variant="success">View Detail</Button>
+                  </Link>
                 </Card.Body>
               </Card>
             </div>
